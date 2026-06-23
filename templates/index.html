@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sentiment-Based Product Recommendation System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero">
+            <nav class="nav">
+                <div class="brand">
+                    <span class="brand-mark">SR</span>
+                    <span>Sentiment Recommender</span>
+                </div>
+                <span class="status-pill">Capstone Demo</span>
+            </nav>
+
+            <section class="hero-grid">
+                <div>
+                    <p class="eyebrow">Product intelligence powered by reviews</p>
+                    <h1>Recommend better products using user similarity and review sentiment.</h1>
+                    <p class="hero-copy">
+                        Select a user to generate the top 5 products they are most likely to prefer,
+                        or test the sentiment classifier with your own review text.
+                    </p>
+                </div>
+
+                <div class="hero-card">
+                    <div class="metric">
+                        <span class="metric-value">{{ users|length }}</span>
+                        <span class="metric-label">Users available</span>
+                    </div>
+                    <div class="mini-divider"></div>
+                    <p>
+                        The app uses the saved recommendation matrix, TF-IDF vectorizer,
+                        and final sentiment classifier from your notebook pipeline.
+                    </p>
+                </div>
+            </section>
+        </header>
+
+        <main class="content-card">
+            <div class="tabs" role="tablist" aria-label="Application sections">
+                <button class="tab-button active" data-tab="recommendation" type="button">
+                    Product Recommendations
+                </button>
+                <button class="tab-button" data-tab="sentiment" type="button">
+                    Review Sentiment Predictor
+                </button>
+            </div>
+
+            <section id="recommendation-panel" class="tab-panel active">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow dark">User-user recommendation</p>
+                        <h2>Find the top 5 products for a user</h2>
+                    </div>
+                    <p>
+                        Start typing a username, select one from the suggestions, and generate recommendations.
+                    </p>
+                </div>
+
+                <form id="recommendation-form" class="action-form">
+                    <div class="field">
+                        <label for="user-id">User ID</label>
+                        <input
+                            id="user-id"
+                            name="user_id"
+                            list="user-list"
+                            placeholder="Example: 00sab00"
+                            autocomplete="off"
+                            required
+                        >
+                        <datalist id="user-list">
+                            {% for user in users %}
+                                <option value="{{ user }}"></option>
+                            {% endfor %}
+                        </datalist>
+                    </div>
+
+                    <button class="primary-button" type="submit">
+                        Recommend Top 5
+                    </button>
+                </form>
+
+                <div id="recommendation-alert"></div>
+                <div id="recommendation-results"></div>
+            </section>
+
+            <section id="sentiment-panel" class="tab-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow dark">Sentiment classifier</p>
+                        <h2>Predict review sentiment</h2>
+                    </div>
+                    <p>
+                        Enter any product review and classify it as Positive or Negative.
+                    </p>
+                </div>
+
+                <form id="sentiment-form" class="action-form stacked">
+                    <div class="field">
+                        <label for="review-text">Review text</label>
+                        <textarea
+                            id="review-text"
+                            name="review_text"
+                            placeholder="Example: I don't like the product because it stopped working after one day."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button class="primary-button" type="submit">
+                        Predict Sentiment
+                    </button>
+                </form>
+
+                <div id="sentiment-alert"></div>
+                <div id="sentiment-result"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
