@@ -12,6 +12,7 @@ def home():
     return render_template(
         "index.html",
         users=recommender.get_users(),
+        users_with_recommendations=recommender.get_users_with_recommendations(),
     )
 
 

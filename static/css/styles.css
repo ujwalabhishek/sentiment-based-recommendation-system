@@ -258,10 +258,56 @@ h2 {
     gap: 8px;
 }
 
+.user-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #f8fafc;
+    margin-bottom: 4px;
+}
+
+.filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.filter-toggle input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.filter-count {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--primary-soft);
+    color: var(--primary-dark);
+    font-size: 12px;
+    font-weight: 800;
+}
+
 label {
     color: #334155;
     font-size: 14px;
     font-weight: 800;
+}
+
+.field-hint {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0;
 }
 
 input,

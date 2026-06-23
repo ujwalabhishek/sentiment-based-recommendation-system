@@ -88,6 +88,15 @@ class SentimentRecommender:
     def get_users(self):
         return sorted(self.recommendation_matrix.index.astype(str).tolist())
 
+    def get_users_with_recommendations(self):
+        recommendation_counts = (self.recommendation_matrix > 0).sum(axis=1)
+
+        return sorted(
+            recommendation_counts[
+                recommendation_counts > 0
+            ].index.astype(str).tolist()
+        )
+
     def _resolve_user_id(self, user_id):
         if user_id in self.recommendation_matrix.index:
             return user_id

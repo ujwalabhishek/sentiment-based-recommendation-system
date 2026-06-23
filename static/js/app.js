@@ -2,6 +2,9 @@ const tabButtons = document.querySelectorAll(".tab-button");
 const tabPanels = document.querySelectorAll(".tab-panel");
 
 const recommendationForm = document.querySelector("#recommendation-form");
+const userInput = document.querySelector("#user-id");
+const recommendableUsersFilter = document.querySelector("#recommendable-users-filter");
+const userFilterHint = document.querySelector("#user-filter-hint");
 const recommendationAlert = document.querySelector("#recommendation-alert");
 const recommendationResults = document.querySelector("#recommendation-results");
 
@@ -132,6 +135,20 @@ tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
         setActiveTab(button.dataset.tab);
     });
+});
+
+recommendableUsersFilter.addEventListener("change", () => {
+    if (recommendableUsersFilter.checked) {
+        userInput.setAttribute("list", "recommendable-user-list");
+        userFilterHint.textContent = "Filtered: dropdown now shows only users with valid recommendation scores.";
+    } else {
+        userInput.setAttribute("list", "all-user-list");
+        userFilterHint.textContent = "Showing all users. Enable the filter to show only users with valid recommendation scores.";
+    }
+
+    userInput.value = "";
+    recommendationResults.innerHTML = "";
+    showAlert(recommendationAlert, "");
 });
 
 

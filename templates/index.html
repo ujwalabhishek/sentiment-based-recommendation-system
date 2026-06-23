@@ -67,20 +67,43 @@
 
                 <form id="recommendation-form" class="action-form">
                     <div class="field">
+                        <div class="user-filter-bar">
+                            <label class="filter-toggle" for="recommendable-users-filter">
+                                <input
+                                    id="recommendable-users-filter"
+                                    type="checkbox"
+                                >
+                                <span>Show only users with recommendations</span>
+                            </label>
+                            <span class="filter-count">
+                                {{ users_with_recommendations|length }} of {{ users|length }} users
+                            </span>
+                        </div>
+
                         <label for="user-id">User ID</label>
                         <input
                             id="user-id"
                             name="user_id"
-                            list="user-list"
+                            list="all-user-list"
                             placeholder="Example: 00sab00"
                             autocomplete="off"
                             required
                         >
-                        <datalist id="user-list">
+                        <datalist id="all-user-list">
                             {% for user in users %}
                                 <option value="{{ user }}"></option>
                             {% endfor %}
                         </datalist>
+
+                        <datalist id="recommendable-user-list">
+                            {% for user in users_with_recommendations %}
+                                <option value="{{ user }}"></option>
+                            {% endfor %}
+                        </datalist>
+
+                        <p id="user-filter-hint" class="field-hint">
+                            Showing all users. Enable the filter to show only users with valid recommendation scores.
+                        </p>
                     </div>
 
                     <button class="primary-button" type="submit">
