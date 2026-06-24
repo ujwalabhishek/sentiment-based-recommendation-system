@@ -11,6 +11,16 @@ app_port: 7860
 
 This project builds an end-to-end sentiment-based product recommendation system for an e-commerce company named **Ebuss**. The goal is to improve product recommendations by combining collaborative filtering with sentiment analysis on historical user reviews and ratings.
 
+
+[**Recommendation Engine UI**](https://huggingface.co/spaces/ujwalabhishek/ebuss-sentiment-recommender)
+
+<img src="static/image/prediction-ui.png">
+
+
+[**Sentiment Predection Engine UI**](https://huggingface.co/spaces/ujwalabhishek/ebuss-sentiment-recommender)
+
+<img src="static/image/sentiment predection.png" />
+
 ## Business Context
 
 Ebuss sells products across categories such as household essentials, books, personal care, medicines, cosmetics, beauty products, electrical appliances, kitchen and dining, and health care. To compete with major e-commerce platforms, Ebuss wants better personalized product recommendations for users based on their past reviews and ratings.
