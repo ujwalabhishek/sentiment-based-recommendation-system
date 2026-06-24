@@ -1,3 +1,12 @@
+---
+title: Ebuss Sentiment Recommender
+emoji: 🛍️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+---
+
 # Sentiment-Based Product Recommendation System
 
 This project builds an end-to-end sentiment-based product recommendation system for an e-commerce company named **Ebuss**. The goal is to improve product recommendations by combining collaborative filtering with sentiment analysis on historical user reviews and ratings.
